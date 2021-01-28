@@ -51,7 +51,7 @@ func (u *TG) Send(data map[string]string, retry bool) {
 		log.Println("Sleeping for : ", random)
 		time.Sleep(time.Duration(random) * time.Second)
 	}
-	message := fmt.Sprintf("<b>%v</b>\n%v | <a href='%v'>Download</a> | <a href='%v'>View</a>", data["title"], data["size"], html.EscapeString(data["view_link"]), html.EscapeString(data["torrent_link"]))
+	message := fmt.Sprintf("<b>%v</b>\n%v | <a href='%v'>View</a> | <a href='%v'>Download</a>", data["title"], data["size"], html.EscapeString(data["view_link"]), html.EscapeString(data["torrent_link"]))
 	send := u.client.Bot.NewSendableMessage(utils.GetChannelId(), message)
 	send.ParseMode = "HTML"
 	send.DisableWebPreview = true
